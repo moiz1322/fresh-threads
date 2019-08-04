@@ -1,0 +1,4 @@
+export const CartTypes = {
+	TOGGLE_SHOW_CART_DROPDOWN: "TOGGLE_SHOW_CART_DROPDOWN",
+	ADD_ITEM: "ADD_ITEM"
+};
