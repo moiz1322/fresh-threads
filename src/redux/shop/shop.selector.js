@@ -10,11 +10,25 @@ export const selectCollections = createSelector(
 export const selectCollectionsForOverview = createSelector(
 	[selectCollections],
 	collections =>
-		Object.keys(collections).map(keyCollection => collections[keyCollection])
+		collections
+			? Object.keys(collections).map(keyCollection => collections[keyCollection])
+			: []
 );
 
-export const selectCollection = urlParam =>
-	createSelector(
+export const selectCollection = urlParam => {
+	console.log(urlParam);
+	return createSelector(
 		[selectCollections],
-		collections => collections[urlParam]
+		collections => (collections ? collections[urlParam] : null)
 	);
+};
+
+export const selectIsCollectionFetching = createSelector(
+	[selectShop],
+	shop => shop.isFetching
+);
+
+export const selectAreCollectionsLoading = createSelector(
+	[selectCollections],
+	collections => !collections
+);
